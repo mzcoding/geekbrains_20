@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::get('/', function () {
 
 //Admin
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function () {
+  Route::get('/', AdminController::class)->name('index');
   Route::resource('/categories', AdminCategoryController::class);
   Route::resource('/news', AdminNewsController::class);
 });
