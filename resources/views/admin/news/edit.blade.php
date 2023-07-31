@@ -27,10 +27,12 @@
             <div class="form-group">
                 <label for="title">Заголовок</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ $news->title }}">
+                @error('title') <strong style="color:red; font-weight: bold">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
                 <label for="author">Автор</label>
                 <input type="text" class="form-control" name="author" id="author" value="{{ $news->author }}">
+                @error('author') <strong style="color:red; font-weight: bold">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
                 <label for="image">Изображение</label>
