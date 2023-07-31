@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class News extends Model
 {
@@ -15,13 +15,27 @@ class News extends Model
 
     protected $table = 'news';
 
-    public function getAll(): Collection
+    protected $fillable = [
+        'category_id',
+        'title',
+        'author',
+        'status',
+        'image',
+        'description'
+    ];
+
+    public function scopeStatus(Builder $query): Builder
     {
-        return DB::table($this->table)->get();
+       if (request()->has('f')) {
+           return $query->where('status', request()->query('f', 'draft'));
+       }
+
+       return $query;
     }
 
-    public function getItemById(int $id): mixed
+
+    public function category(): BelongsTo
     {
-        return DB::table($this->table)->find($id);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
