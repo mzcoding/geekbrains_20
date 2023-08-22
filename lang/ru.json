@@ -1,4 +1,12 @@
 {
     "News was saved successfully": "Запись успешно сохранена",
-    "We can not save item, pleas try again": "Не удалось сохранить запись"
+    "We can not save item, pleas try again": "Не удалось сохранить запись",
+    "Login": "Вход",
+    "Email Address": "Email Адрес",
+    "Password": "Пароль",
+    "Confirm Password": "Подтвердите пароль",
+    "Remember Me": "Запомнить меня",
+    "Register": "Регистрация",
+    "Name": "Имя",
+    "Forgot Your Password?": "Забыли пароль?"
 }
