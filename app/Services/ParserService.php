@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Services\Contracts\Parser;
+use Illuminate\Support\Facades\Storage;
 use JetBrains\PhpStorm\NoReturn;
 use Orchestra\Parser\Xml\Facade as XmlParserData;
 
@@ -42,6 +43,9 @@ class ParserService implements Parser
             ],
         ]);
 
-        dd($data);
+        $explode = explode("/", $this->link);
+        $fileName = end($explode);
+
+        Storage::append('parse/' . $fileName . ".json", json_encode($data));
     }
 }
